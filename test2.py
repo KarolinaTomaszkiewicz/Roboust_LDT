@@ -4,35 +4,29 @@ from scipy.signal import hilbert, chirp
 
 duration = 1.0
 fs = 400.0
-samples = int(fs*duration)
+samples = int(fs * duration)
 # t = np.arange(samples) / fs
 
 # signal = chirp(t, 20.0, t[-1], 100.0)
 # signal *= (1.0 + 0.5 * np.sin(2.0*np.pi*3.0*t) )
 
 
-t=[]
-signal=[]
+t = []
+signal = []
 
 with open('zestaw1.txt') as f:
     content = f.readlines()
+
 content = [x.strip() for x in content]
 
-print(content)
-print(len(content))
+for item in content:
+    t.append(float(item.split(' ')[0]))
+    signal.append(float(item.split(' ')[1]))
 
-for item in range(len(content)):
-    a = content[item]
-    #a = a.replace(" ", ",")
-    print(a)
-    t=a[0]
-    # signal=a[1]
-    print(t)
-    # print(signal)
+print(len(t))
+print(signal)
 
 
-
-"""
 analytic_signal = hilbert(signal)
 amplitude_envelope = np.abs(analytic_signal)
 instantaneous_phase = np.unwrap(np.angle(analytic_signal))
@@ -51,4 +45,4 @@ ax1.set_xlabel("time in seconds")
 ax1.set_ylim(0.0, 120.0)
 plt.show()
 
-"""
+
