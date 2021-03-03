@@ -18,6 +18,7 @@ signal = []
 with open('zestaw1.txt') as f:
     content = f.readlines()
 
+
 content = [x.strip() for x in content]
 
 for item in content:
@@ -30,6 +31,8 @@ print(signal)
 x = statistics.mean(signal)
 
 signal = [item - x for item in signal]
+
+
 
 plt.plot(t, signal)
 plt.show()
@@ -51,3 +54,4 @@ ax1.plot(t[1:], instantaneous_frequency)
 ax1.set_xlabel("time in seconds")
 ax1.set_ylim(0.0, 120.0)
 plt.show()
+
